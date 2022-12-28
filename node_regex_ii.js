@@ -12,7 +12,7 @@ function my_func (data) {
 // Get html from url 
 
 // Obtain data from text
-let fs = require("fs");
+import fs from "fs";
 let green_grape = fs.readFileSync("frudia_green_grape_UV.txt", "utf8");
 let ultra_uv = fs.readFileSync("frudia_ultra_uv_ingredients.txt", "utf8");
 

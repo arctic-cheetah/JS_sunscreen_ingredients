@@ -22,19 +22,20 @@ ultra_uv = my_func(ultra_uv);
 
 // Find the union of the elements
 // let union = [... new Set(ultra_uv.concat(green_grape))];
-// console.log("Common ingredients:\n" + union);
+// console.log(union);
+// console.log(union.length);
 
 
 // Find the intersection of the elements
 let intersect = green_grape.filter(e_grape => (ultra_uv.find(e_ultra => e_grape == e_ultra)));
-
-
-// Find the differences
-let diff = green_grape.filter(e_grape => (ultra_uv.find(e_ultra => e_grape == e_ultra) == undefined ? 1 : 0));
-console.log(diff);
+console.log(intersect.length);
+console.log(intersect);
+// // Find the differences
+// let diff = green_grape.filter(e_grape => (ultra_uv.find(e_ultra => e_grape == e_ultra) == undefined ? 1 : 0));
+// console.log(diff);
 
 
 console.log(ultra_uv.length);
 console.log(green_grape.length);
-console.log(intersect.length);
+
 

@@ -69,6 +69,29 @@ function intersect_ingred (sunblock) {
 
 // A function to find the difference in ingredients between two sunblock, uses an intersection to find differents between two sunblock
 function diff_ingred (sunblock, obj) {
+    //Get the keys from the intersection, and compare for both items
+    let keys = Object.keys(obj);
+    console.log(keys)
+    //Split the keys
+    //Compare the intersection with the item
+    for (let x in obj) {
+        
+        let curr_item = x.split(",");
+        //Get the list of common ingredients between two sunblocks
+        let common_ingred = obj[x]["common_ingredients"];
+        //Get the respective ingredients of each sunblock 
+        let itemA = sunblock[curr_item[0]]["ingredients"];
+        let itemB = sunblock[curr_item[1]]["ingredients"];
+
+        //Find the different respective ingredients in each sunblock
+        let diff_itemA = itemA.filter((e1) => common_ingred.find(e2 => e1 == e2) == undefined ? 1 : 0);
+        let diff_itemB = itemB.filter((e1) => common_ingred.find(e2 => e1 == e2) == undefined ? 1 : 0);
+
+        // obj[x][curr_item[0]] = {"different_ingredients" : diff_itemA};
+        // obj[x][curr_item[1]] = {"different_ingredients" : diff_itemB};
+        obj[x]["different_ingredients"] = {[curr_item[0]] : diff_itemA, [curr_item[1]] : diff_itemB};
+    }
+
 
 }
 
@@ -96,9 +119,10 @@ sunblock.avocado = {ingredients : sunblock_ingred[2]};
 
 
 
-let intersect = intersect_ingred(sunblock);
-let diff = diff_ingred(sunblock, intersect);
-console.log(intersect);
+let info = intersect_ingred(sunblock);
+diff_ingred(sunblock, info);
+console.log(info);
+console.log(info["ultra_uv,avocado"]["different_ingredients"]);
 
 // let diff_grape_uv = sunblock.g_grape.ingredients.filter(e_grape => (sunblock.ultra_uv.ingredients.find(e_uv => e_uv == e_grape) == undefined ? 1 : 0));
 // console.log(diff_grape_uv);
